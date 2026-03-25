@@ -180,8 +180,15 @@ subtrans/
 ## Build & Package | 构建打包
 
 ```bash
+# 安装 pyinstaller
 pip install pyinstaller
-pyinstaller SubTrans.spec
+
+# 打包
+rm -rf build dist
+python3 -m PyInstaller SubTrans.spec
+
+# 运行打包后的程序
+./dist/SubTrans
 ```
 
 ## License | 许可证
