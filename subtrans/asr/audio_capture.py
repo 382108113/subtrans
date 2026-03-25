@@ -7,11 +7,13 @@ import wave
 import io
 from typing import Optional, Callable
 
+from subtrans import config
+
 
 class AudioCapture:
     """实时音频捕获器"""
 
-    def __init__(self, device_index: int = None, sample_rate: int = 16000, chunk_size: int = 4096):
+    def __init__(self, device_index: int = None, sample_rate: int = None, chunk_size: int = None):
         """
         初始化音频捕获
 
@@ -20,9 +22,9 @@ class AudioCapture:
             sample_rate: 采样率，Whisper 需要 16000
             chunk_size: 每次读取的帧数
         """
-        self.device_index = device_index
-        self.sample_rate = sample_rate
-        self.chunk_size = chunk_size
+        self.device_index = device_index if device_index is not None else config.AUDIO_DEVICE_INDEX
+        self.sample_rate = sample_rate or config.AUDIO_SAMPLE_RATE
+        self.chunk_size = chunk_size or config.AUDIO_CHUNK_SIZE
         self.audio = None
         self.stream = None
         self.is_recording = False

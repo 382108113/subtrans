@@ -7,6 +7,8 @@ import torch
 import numpy as np
 from typing import Optional, Callable
 
+from subtrans import config
+
 # 设置离线模式
 os.environ['TRANSFORMERS_OFFLINE'] = '1'
 os.environ['HF_HUB_OFFLINE'] = '1'
@@ -164,9 +166,11 @@ class StreamingSpeechRecognizer:
 _streaming_recognizer: Optional[StreamingSpeechRecognizer] = None
 
 
-def get_streaming_recognizer(model_size: str = "base") -> StreamingSpeechRecognizer:
+def get_streaming_recognizer(model_size: str = None) -> StreamingSpeechRecognizer:
     """获取全局流式语音识别器"""
     global _streaming_recognizer
+    if model_size is None:
+        model_size = config.WHISPER_MODEL_SIZE
     if _streaming_recognizer is None:
         _streaming_recognizer = StreamingSpeechRecognizer(model_size)
     return _streaming_recognizer

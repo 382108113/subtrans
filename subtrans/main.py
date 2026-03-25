@@ -23,6 +23,7 @@ from subtrans.utils.hotkeys import get_hotkey_manager
 from subtrans.asr.audio_capture import AudioCapture
 from subtrans.asr.speech_recognizer import get_speech_recognizer
 from subtrans.asr.streaming_recognizer import get_streaming_recognizer
+from subtrans import config
 
 
 class SubTransApp(QObject):
@@ -41,9 +42,9 @@ class SubTransApp(QObject):
         self.overlay = OverlayWindow()
         self.selection_window: Optional[SelectionWindow] = None
 
-        # 翻译组件 - 使用 Ollama (qwen3.5)
+        # 翻译组件 - 使用 Ollama
         self.recognizer = get_recognizer()
-        self.translator = get_ollama_translator("qwen3.5:0.8b")
+        self.translator = get_ollama_translator(config.TRANSLATION_MODEL)
 
         # 语音识别组件
         self.audio_capture = AudioCapture()
@@ -67,14 +68,10 @@ class SubTransApp(QObject):
 
     def _setup_hotkeys(self):
         """设置全局快捷键"""
-        # Ctrl+Alt+2: 启动选区翻译 (pynput 在 macOS 上识别 Option 为 alt)
-        self.hotkey_manager.register('ctrl+alt+2', self.start_selection)
-        # Ctrl+Alt+3: 启动窗口翻译
-        self.hotkey_manager.register('ctrl+alt+3', self.start_window_selection)
-        # Ctrl+Alt+4: 隐藏/显示悬浮窗
-        self.hotkey_manager.register('ctrl+alt+4', self.toggle_overlay)
-        # Ctrl+Alt+5: 启动语音识别翻译
-        self.hotkey_manager.register('ctrl+alt+5', self.start_speech_recognition)
+        self.hotkey_manager.register(config.HOTKEY_SELECT_REGION, self.start_selection)
+        self.hotkey_manager.register(config.HOTKEY_TOGGLE_OVERLAY, self.toggle_overlay)
+        self.hotkey_manager.register(config.HOTKEY_SPEECH_MODE, self.start_speech_recognition)
+        self.hotkey_manager.register(config.HOTKEY_OCR_MODE, self.start_selection)  # OCR reuse selection
         self.hotkey_manager.start()
 
     def _setup_tray(self):

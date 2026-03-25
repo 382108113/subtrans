@@ -6,11 +6,13 @@ import subprocess
 import time
 from typing import Optional
 
+from subtrans import config
+
 
 class OllamaTranslator:
     """基于 Ollama 的翻译器"""
 
-    def __init__(self, model: str = "qwen2.5:0.5b", base_url: str = "http://localhost:11434"):
+    def __init__(self, model: str = None, base_url: str = None):
         """
         初始化 Ollama 翻译器
 
@@ -18,8 +20,8 @@ class OllamaTranslator:
             model: Ollama 模型名称
             base_url: Ollama 服务地址
         """
-        self.model = model
-        self.base_url = base_url
+        self.model = model or config.TRANSLATION_MODEL
+        self.base_url = base_url or config.OLLAMA_BASE_URL
         self._server_process = None
 
     def start_server(self):
@@ -134,9 +136,11 @@ class OllamaTranslator:
 _translator: Optional[OllamaTranslator] = None
 
 
-def get_ollama_translator(model: str = "qwen2.5:0.5b") -> OllamaTranslator:
+def get_ollama_translator(model: str = None) -> OllamaTranslator:
     """获取全局 Ollama 翻译器"""
     global _translator
+    if model is None:
+        model = config.TRANSLATION_MODEL
     if _translator is None:
         _translator = OllamaTranslator(model)
         _translator.start_server()
