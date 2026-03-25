@@ -142,6 +142,21 @@ python run.py
 2. Select the screen region to translate
 3. Software will recognize and translate the text in the region
 
+## Configuration | 配置
+
+Edit `subtrans/config.py` to customize settings | 修改 `subtrans/config.py` 自定义设置：
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `TRANSLATION_MODEL` | qwen3.5:0.8b | Ollama 模型名称 |
+| `OLLAMA_BASE_URL` | localhost:11434 | Ollama 服务地址 |
+| `WHISPER_MODEL_SIZE` | base | Whisper 模型 (tiny/base/small/medium/large-v3) |
+| `SPEECH_THRESHOLD` | 0.5 | 语音检测阈值 (0-1) |
+| `HOTKEY_SELECT_REGION` | ctrl+alt+2 | 选择区域热键 |
+| `HOTKEY_WINDOW_SELECTION` | ctrl+alt+3 | 选择窗口热键 |
+| `HOTKEY_TOGGLE_OVERLAY` | ctrl+alt+4 | 显示/隐藏浮动窗口热键 |
+| `HOTKEY_SPEECH_MODE` | ctrl+alt+5 | 语音翻译热键 |
+
 ## Troubleshooting | 常见问题
 
 ### Q: 语音识别不工作？ | Speech recognition not working?
@@ -161,6 +176,7 @@ python run.py
 
 ```
 subtrans/
+├── config.py               # 配置文件 | Configuration file
 ├── main.py                 # 主程序入口 | Main entry point
 ├── asr/                    # 语音识别模块 | Speech recognition module
 │   ├── audio_capture.py    # 音频捕获 | Audio capture
