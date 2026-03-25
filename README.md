@@ -118,29 +118,27 @@ python run.py
 | Hotkey | 功能 | Description |
 |--------|------|-------------|
 | Ctrl+Alt+2 | 选择翻译区域 | Select translation region |
-| Ctrl+Alt+3 | 显示/隐藏浮动窗口 | Toggle floating window |
-| Ctrl+Alt+4 | 开始/停止语音翻译 | Start/stop speech translation |
-| Ctrl+Alt+5 | OCR 截图翻译 | OCR screenshot translation |
+| Ctrl+Alt+3 | 选择窗口翻译 | Select window for translation |
+| Ctrl+Alt+4 | 显示/隐藏浮动窗口 | Toggle floating window |
+| Ctrl+Alt+5 | 开始/停止语音翻译 | Start/stop speech translation |
 
 ### Speech Translation Mode | 语音翻译模式
 
-1. 按 Ctrl+Alt+4 开始语音翻译
+1. 按 Ctrl+Alt+5 开始语音翻译
 2. 对着麦克风说话，软件会实时识别并翻译
-3. 再次按 Ctrl+Alt+4 停止
+3. 再次按 Ctrl+Alt+5 停止
 
-1. Press Ctrl+Alt+4 to start speech translation
+1. Press Ctrl+Alt+5 to start speech translation
 2. Speak into the microphone, software will recognize and translate in real-time
-3. Press Ctrl+Alt+4 again to stop
+3. Press Ctrl+Alt+5 again to stop
 
-### OCR Translation Mode | OCR 翻译模式
+### Screen Region Translation | 屏幕区域翻译
 
-1. 按 Ctrl+Alt+5 进入 OCR 模式
-2. 选择要翻译的屏幕区域
-3. 软件会识别区域内的文字并翻译显示
+1. 按 Ctrl+Alt+2 选择要翻译的屏幕区域
+2. 软件会识别区域内的文字并翻译显示
 
-1. Press Ctrl+Alt+5 to enter OCR mode
-2. Select the screen region to translate
-3. Software will recognize and translate the text in the region
+1. Press Ctrl+Alt+2 to select screen region to translate
+2. Software will recognize and translate the text in the region
 
 ## Configuration | 配置
 
