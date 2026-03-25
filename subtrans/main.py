@@ -69,9 +69,9 @@ class SubTransApp(QObject):
     def _setup_hotkeys(self):
         """设置全局快捷键"""
         self.hotkey_manager.register(config.HOTKEY_SELECT_REGION, self.start_selection)
+        self.hotkey_manager.register(config.HOTKEY_WINDOW_SELECTION, self.start_window_selection)
         self.hotkey_manager.register(config.HOTKEY_TOGGLE_OVERLAY, self.toggle_overlay)
         self.hotkey_manager.register(config.HOTKEY_SPEECH_MODE, self.start_speech_recognition)
-        self.hotkey_manager.register(config.HOTKEY_OCR_MODE, self.start_selection)  # OCR reuse selection
         self.hotkey_manager.start()
 
     def _setup_tray(self):
@@ -87,11 +87,11 @@ class SubTransApp(QObject):
         window_action = QAction("选择窗口翻译 (⌃⌥3)", self.app)
         window_action.triggered.connect(self.start_window_selection)
 
-        speech_action = QAction("语音识别翻译 (⌃⌥5)", self.app)
-        speech_action.triggered.connect(self.start_speech_recognition)
-
         toggle_action = QAction("显示/隐藏悬浮窗 (⌃⌥4)", self.app)
         toggle_action.triggered.connect(self.toggle_overlay)
+
+        speech_action = QAction("语音识别翻译 (⌃⌥5)", self.app)
+        speech_action.triggered.connect(self.start_speech_recognition)
 
         quit_action = QAction("退出", self.app)
         quit_action.triggered.connect(self.quit)

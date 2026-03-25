@@ -27,9 +27,9 @@ AUDIO_DEVICE_INDEX = None  # None = 默认设备 | None = default device
 # 热键设置 | Hotkey Settings
 # ============================================================
 HOTKEY_SELECT_REGION = "ctrl+alt+2"  # 选择翻译区域 | Select translation region
-HOTKEY_TOGGLE_OVERLAY = "ctrl+alt+3"  # 显示/隐藏浮动窗口 | Toggle floating window
-HOTKEY_SPEECH_MODE = "ctrl+alt+4"  # 开始/停止语音翻译 | Start/stop speech translation
-HOTKEY_OCR_MODE = "ctrl+alt+5"  # OCR 截图翻译 | OCR screenshot translation
+HOTKEY_WINDOW_SELECTION = "ctrl+alt+3"  # 选择窗口翻译 | Select window translation
+HOTKEY_TOGGLE_OVERLAY = "ctrl+alt+4"  # 显示/隐藏浮动窗口 | Toggle floating window
+HOTKEY_SPEECH_MODE = "ctrl+alt+5"  # 开始/停止语音翻译 | Start/stop speech translation
 
 # ============================================================
 # OCR 设置 | OCR Settings
